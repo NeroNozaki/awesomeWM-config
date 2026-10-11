@@ -58,7 +58,7 @@ local function try_load_experimental()
 
     -- 1. Load the fancy theme (this is the most common failure point)
     local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
-    beautiful.init(theme_dir)
+    beautiful.init(theme_dir .. "theme.lua")
 
     -- 2. Load dependencies (anything for testing)
     -- require("configuration")
