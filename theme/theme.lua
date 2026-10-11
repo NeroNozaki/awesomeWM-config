@@ -46,9 +46,9 @@ theme.transparent = "#00000000"
 theme.color0 = "#232526"
 theme.color8 = "#2c2e2f"
 
---- Red
-theme.color1 = "#df5b61"
-theme.color9 = "#e8646a"
+--- Blue
+theme.color1 = "#6791c9"
+theme.color9 = "#709ad2"
 
 --- Green
 theme.color2 = "#78b892"
@@ -58,9 +58,9 @@ theme.color10 = "#81c19b"
 theme.color3 = "#de8f78"
 theme.color11 = "#e79881"
 
---- Blue
-theme.color4 = "#6791c9"
-theme.color12 = "#709ad2"
+--- Red
+theme.color4 = "#df5b61"
+theme.color12 = "#e8646a"
 
 --- Magenta
 theme.color5 = "#bc83e3"
@@ -144,7 +144,8 @@ theme.titlebar_maximized_button_normal_inactive_hover = icon_dir .. "maximized_f
 theme.titlebar_maximized_button_focus_inactive_hover = icon_dir .. "maximized_focus_hover.svg"
 
 --- Wibar
-theme.wibar_bg = "#101213"
+-- theme.wibar_bg = "#101213"
+theme.wibar_bg = theme.transparent
 theme.wibar_height = dpi(40)
 
 --- Music
@@ -157,13 +158,14 @@ theme.music_accent = theme.lighter_black
 --- ░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀
 
 --- Wallpapers
-theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/wave.png")
---- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/yoru-dots.png")
---- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/mountain.jpg")
---- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/rocks.jpg")
+-- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/wave.png")
+-- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/yoru-dots.png")
+theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/mountain.jpg")
+-- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/rocks.jpg")
 
 --- Image Assets
-theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
+-- theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
+theme.pfp = gears.surface.load_uncached(os.getenv("HOME") .. "/.face")
 theme.music = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/music.png")
 
 --- Layout
@@ -183,8 +185,8 @@ theme.layout_machi = icons.machi
 theme.icon_theme = "WhiteSur-dark"
 
 --- Borders
-theme.border_width = 0
-theme.oof_border_width = 0
+theme.border_width = dpi(1)
+theme.oof_border_width = dpi(1)
 theme.border_color_marked = theme.titlebar_bg
 theme.border_color_active = theme.titlebar_bg
 theme.border_color_normal = theme.titlebar_bg
@@ -228,11 +230,11 @@ theme.tag_preview_widget_margin = dpi(10)
 theme.tag_preview_widget_border_radius = theme.border_radius
 theme.tag_preview_client_border_radius = theme.border_radius / 2
 theme.tag_preview_client_opacity = 1
-theme.tag_preview_client_bg = theme.wibar_bg
-theme.tag_preview_client_border_color = theme.wibar_bg
+theme.tag_preview_client_bg = theme.widget_bg
+theme.tag_preview_client_border_color = theme.widget_bg
 theme.tag_preview_client_border_width = 0
-theme.tag_preview_widget_bg = theme.wibar_bg
-theme.tag_preview_widget_border_color = theme.wibar_bg
+theme.tag_preview_widget_bg = theme.widget_bg
+theme.tag_preview_widget_border_color = theme.widget_bg
 theme.tag_preview_widget_border_width = 0
 
 --- Layout List
@@ -240,7 +242,7 @@ theme.layoutlist_shape_selected = helpers.ui.rrect(theme.border_radius)
 theme.layoutlist_bg_selected = theme.widget_bg
 
 --- Gaps
-theme.useless_gap = dpi(1)
+theme.useless_gap = dpi(0)
 
 --- Systray
 theme.systray_icon_size = dpi(20)

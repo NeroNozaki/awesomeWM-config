@@ -34,7 +34,7 @@ return function(s)
 			reset_search_icon()
 
 			local search_text = wibox.widget({
-				--- markup = helpers.ui.colorize_text("Search", beautiful.color8),
+				markup = helpers.ui.colorize_text("Search", beautiful.color8),
 				align = "center",
 				valign = "center",
 				font = beautiful.font,
