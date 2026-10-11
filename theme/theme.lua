@@ -39,6 +39,7 @@ theme.grey = "#343637"
 theme.grey_fg = "#3e4041"
 theme.grey_fg2 = "#484a4b"
 theme.light_grey = "#505253"
+theme.lighter_grey = "#535d6c"
 
 theme.transparent = "#00000000"
 
@@ -187,9 +188,9 @@ theme.icon_theme = "WhiteSur-dark"
 --- Borders
 theme.border_width = dpi(1)
 theme.oof_border_width = dpi(1)
-theme.border_color_marked = theme.titlebar_bg
-theme.border_color_active = theme.titlebar_bg
-theme.border_color_normal = theme.titlebar_bg
+theme.border_color_marked = theme.black
+theme.border_color_active = theme.color4
+theme.border_color_normal = theme.color0
 theme.border_color_new = theme.titlebar_bg
 theme.border_color_urgent = theme.titlebar_bg
 theme.border_color_floating = theme.titlebar_bg
@@ -230,11 +231,11 @@ theme.tag_preview_widget_margin = dpi(10)
 theme.tag_preview_widget_border_radius = theme.border_radius
 theme.tag_preview_client_border_radius = theme.border_radius / 2
 theme.tag_preview_client_opacity = 1
-theme.tag_preview_client_bg = theme.widget_bg
-theme.tag_preview_client_border_color = theme.widget_bg
+theme.tag_preview_client_bg = theme.wibar_bg
+theme.tag_preview_client_border_color = theme.wibar_bg
 theme.tag_preview_client_border_width = 0
-theme.tag_preview_widget_bg = theme.widget_bg
-theme.tag_preview_widget_border_color = theme.widget_bg
+theme.tag_preview_widget_bg = theme.wibar_bg
+theme.tag_preview_widget_border_color = theme.wibar_bg
 theme.tag_preview_widget_border_width = 0
 
 --- Layout List

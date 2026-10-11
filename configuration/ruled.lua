@@ -11,7 +11,7 @@ ruled.client.connect_signal("request::rules", function()
 	--- Global
 	ruled.client.append_rule({
 		id = "global",
-		rule = {},
+		rule = { },
 		properties = {
 			raise = true,
 			size_hints_honor = false,
@@ -20,6 +20,7 @@ ruled.client.connect_signal("request::rules", function()
 			-- screen = awful.screen.preferred,
 			screen = awful.screen.focused,
 			focus = awful.client.focus.filter,
+			border_color = beautiful.border_color_normal,
 			titlebars_enabled = beautiful.titlebar_enabled,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 		},

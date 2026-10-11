@@ -36,9 +36,9 @@ awesome.connect_signal("widgets::splash::visibility", function(vis)
 end)
 
 --- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-	c:emit_signal("request::activate", "mouse_enter", { raise = false })
-end)
+-- client.connect_signal("mouse::enter", function(c)
+-- 	c:emit_signal("request::activate", "mouse_enter", { raise = false })
+-- end)
 
 --- Wallpapers
 --- ~~~~~~~~~-
@@ -56,7 +56,9 @@ end)
 
 --- Flash focus
 --- ~~~~~~~~~~~
-bling.module.flash_focus.enable()
+-- bling.module.flash_focus.enable()
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_color_active end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_color_normal end)
 
 --- Tag preview
 --- ~~~~~~~~~~~
