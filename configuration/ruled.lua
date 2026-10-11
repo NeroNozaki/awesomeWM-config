@@ -74,7 +74,11 @@ ruled.client.connect_signal("request::rules", function()
 				"dialog",
 			},
 		},
-		properties = { floating = true, placement = helpers.client.centered_client_placement },
+		properties = {
+			floating = true,
+			placement = helpers.client.centered_client_placement,
+			border_color = beautiful.border_color_floating,
+		},
 	})
 
 	--- Centered
@@ -134,3 +138,8 @@ ruled.client.connect_signal("request::rules", function()
 		end,
 	})
 end)
+
+if ruled.client.id ~= "floating" then
+	ruled.client.connect_signal("focus", function(c) c.border_color = beautiful.border_color_active end)
+	ruled.client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_color_normal end)
+end
