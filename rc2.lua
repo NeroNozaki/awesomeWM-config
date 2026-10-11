@@ -25,7 +25,7 @@ beautiful.init(theme_dir .. "theme.lua")
 --- ░█░█░█░█░█░█░█░█░█░░░█▀▀░▀▀█
 --- ░▀░▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀▀▀
 
--- require("modules")
+require("modules")
 
 --- ░█░█░▀█▀
 --- ░█░█░░█░

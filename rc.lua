@@ -47,13 +47,57 @@ do
 end
 -- }}}
 
+
+-- ============================================================
+-- Safe experimental loader
+-- ============================================================
+local function try_load_experimental()
+    -- Everything that can break goes inside this function
+    -- local beautiful = require("beautiful")
+    -- local gears = require("gears")
+
+    -- 1. Load the fancy theme (this is the most common failure point)
+    local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
+    beautiful.init(theme_dir)
+
+    -- 2. Load dependencies (anything for testing)
+    -- require("configuration")
+    require("modules")
+    -- require("ui")
+
+    --- Enable for lower memory consumption
+    collectgarbage("setpause", 110)
+    collectgarbage("setstepmul", 1000)
+    gears.timer({
+        timeout = 5,
+        autostart = true,
+        call_now = true,
+        callback = function()
+            collectgarbage("collect")
+        end,
+    })
+
+end
+
+local ok, err = pcall(try_load_experimental)
+
+if not ok then
+    -- Experimental stuff failed → keep the base config running
+    naughty.notify({
+        preset = naughty.config.presets.critical,
+        title  = "Experimental config failed",
+        text   = tostring(err),
+        timeout = 0,          -- stays until you click it
+    })
+
+    -- Optional: force a known-good minimal theme so things still look decent
+    beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+end
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
-beautiful.init(theme_dir .. "theme.lua")
--- require("configuration")
-require("modules")
-require("ui")
+beautiful.init(theme_dir .. "theme2.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -649,4 +693,5 @@ awful.spawn.once("touchpad-watcher.sh")
 
 -- personal configurations
 awful.spawn.with_shell("setxkbmap -option 'ctrl:nocaps,shift:both_capslock_cancel'")
+
 
