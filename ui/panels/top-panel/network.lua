@@ -30,40 +30,72 @@ return function()
 	})
 
 	watch(
-		[[sh -c "
-		nmcli g | tail -n 1 | awk '{ print $1 }'
-		"]],
+		[[sh -c "nmcli -t -f STATE g"]],
 		5,
 		function(_, stdout)
-			local net_ssid = stdout
-			net_ssid = string.gsub(net_ssid, "^%s*(.-)%s*$", "%1")
+			local state = stdout:gsub("%s+", "")
 
-			if not net_ssid:match("disconnected") then
-				local getstrength = [[
-					awk '/^\s*w/ { print  int($3 * 100 / 70) }' /proc/net/wireless
-					]]
-				awful.spawn.easy_async_with_shell(getstrength, function(stdout)
-					if not tonumber(stdout) then
-						return
+			if state == "connected" then
+				-- Get signal strength (0-100)
+				awful.spawn.easy_async_with_shell(
+					[[awk 'NR==3 {print int($3 * 100 / 70)}' /proc/net/wireless 2>/dev/null || echo 0]],
+					function(strength_stdout)
+						local strength = tonumber(strength_stdout) or 0
+
+						if strength <= 20 then
+							network.icon:set_text("") -- very weak
+						elseif strength <= 40 then
+							network.icon:set_text("") -- weak
+						elseif strength <= 60 then
+							network.icon:set_text("") -- medium
+						elseif strength <= 80 then
+							network.icon:set_text("") -- good
+						else
+							network.icon:set_text("") -- excellent
+						end
 					end
-					local strength = tonumber(stdout)
-					if strength <= 20 then
-						network.icon:set_text("")
-					elseif strength <= 40 then
-						network.icon:set_text("")
-					elseif strength <= 60 then
-						network.icon:set_text("")
-					elseif strength <= 80 then
-						network.icon:set_text("")
-					else
-						network.icon:set_text("")
-					end
-				end)
+				)
 			else
-				network.icon:set_text("")
+				network.icon:set_text("") -- disconnected
 			end
 		end
 	)
+
+	-- watch(
+	-- 	[[sh -c "
+	-- 	nmcli g | tail -n 1 | awk '{ print $1 }'
+	-- 	"]],
+	-- 	5,
+	-- 	function(_, stdout)
+	-- 		local net_ssid = stdout
+	-- 		net_ssid = string.gsub(net_ssid, "^%s*(.-)%s*$", "%1")
+	--
+	-- 		if not net_ssid:match("disconnected") then
+	-- 			local getstrength = [[
+	-- 				awk '/^\s*w/ { print  int($3 * 100 / 70) }' /proc/net/wireless
+	-- 				]]
+	-- 			awful.spawn.easy_async_with_shell(getstrength, function(stdout)
+	-- 				if not tonumber(stdout) then
+	-- 					return
+	-- 				end
+	-- 				local strength = tonumber(stdout)
+	-- 				if strength <= 20 then
+	-- 					network.icon:set_text("")
+	-- 				elseif strength <= 40 then
+	-- 					network.icon:set_text("")
+	-- 				elseif strength <= 60 then
+	-- 					network.icon:set_text("")
+	-- 				elseif strength <= 80 then
+	-- 					network.icon:set_text("")
+	-- 				else
+	-- 					network.icon:set_text("")
+	-- 				end
+	-- 			end)
+	-- 		else
+	-- 			network.icon:set_text("")
+	-- 		end
+	-- 	end
+	-- )
 
 	return widget
 end

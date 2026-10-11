@@ -19,11 +19,30 @@ shift = "Shift"
 
 --- Global key bindings
 --- ~~~~~~~~~~~~~~~~~~~
-awful.keyboard.append_global_keybindings({
 
-	-- awful.key({}, "Escape", function()
-	--   helpers.ui.close_panels()
-	-- end, { description = "close panels", group = "hotkeys" }),
+awful.keyboard.append_global_keybindings({
+--
+-- 	awful.key({}, "Escape", function()
+-- 		local closed = false
+--
+-- 		for s in screen do
+-- 			if s.central_panel and s.central_panel.visible then
+-- 				s.central_panel.visible = false
+-- 				closed = true
+-- 			end
+-- 			if s.notification_panel and s.notification_panel.visible then
+-- 				s.notification_panel.visible = false
+-- 				closed = true
+-- 			end
+-- 			if s.info_panel and s.info_panel.visible then
+-- 				s.info_panel.visible = false
+-- 				closed = true
+-- 			end
+-- 		end
+--
+-- 		-- If we closed something, we "used" the Escape.
+-- 		-- If we didn't, we do nothing → the key goes to the client (nvim, etc.)
+-- 	end, { description = "close panels", group = "hotkeys" }),
 
 	--- App
 	--- ~~~
