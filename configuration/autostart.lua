@@ -32,6 +32,7 @@ local function autostart_apps()
 	awful.spawn.once("ulauncher --hide-window --no-window-shadow")
 	awful.spawn.once("touchpad-watcher.sh")
 	awful.spawn.once("brightnessctl -n 1")
+	awful.spawn.once("polybar -r -c $HOME/.config/awesome/ui/polybar/config.ini")
 
 	-- personal configurations
 	awful.spawn.with_shell("setxkbmap -option 'ctrl:nocaps,shift:both_capslock_cancel'")

@@ -233,13 +233,18 @@ awful.keyboard.append_global_keybindings({
 	end, { description = "open color picker", group = "hotkeys" }),
 
 	--- Screenshots
-	awful.key({}, "Print", function()
-		awful.spawn.easy_async_with_shell(apps.utils.full_screenshot, function() end)
-	end, { description = "take a full screenshot", group = "hotkeys" }),
+	-- awful.key({}, "Print", function()
+	-- 	awful.spawn.easy_async_with_shell(apps.utils.full_screenshot, function() end)
+	-- end, { description = "take a full screenshot", group = "hotkeys" }),
+	--
+	-- awful.key({ alt }, "Print", function()
+	-- 	awful.spawn.easy_async_with_shell(apps.utils.area_screenshot, function() end)
+	-- end, { description = "take a area screenshot", group = "hotkeys" }),
 
-	awful.key({ alt }, "Print", function()
-		awful.spawn.easy_async_with_shell(apps.utils.area_screenshot, function() end)
-	end, { description = "take a area screenshot", group = "hotkeys" }),
+	awful.key({}, "Print", function()
+		awful.spawn.easy_async_with_shell("flameshot gui &", function() end)
+	end, { description = "launch flameshot", group = "hotkeys"}
+	),
 
 	--- Lockscreen
 	awful.key({ mod, alt }, "l", function()
@@ -255,7 +260,12 @@ awful.keyboard.append_global_keybindings({
     awful.key({ }, "F10", function()
         awful.spawn.with_shell("$HOME/.dotfiles/scripts/touchpad-toggle.sh")
     end,
-        {description = "toggle touchpad", group = "personal"})
+        {description = "toggle touchpad", group = "personal"}),
+
+	awful.key({ shift }, "F11", function()
+		awful.spawn.with_shell("$HOME/.dotfiles/scripts/neo-toggle.sh")
+	end,
+		{description = "toggle the neo layout", group = "personal"})
 })
 
 --- Client key bindings

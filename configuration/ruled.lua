@@ -139,7 +139,7 @@ ruled.client.connect_signal("request::rules", function()
 	})
 
 	ruled.client.append_rule({
-		rule = { class = "libreWolf" },
+		rule = { class = "LibreWolf" },
 		properties = {
 			size_hints_honor = false,
 			screen = 1,

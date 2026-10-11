@@ -145,8 +145,8 @@ theme.titlebar_maximized_button_normal_inactive_hover = icon_dir .. "maximized_f
 theme.titlebar_maximized_button_focus_inactive_hover = icon_dir .. "maximized_focus_hover.svg"
 
 --- Wibar
--- theme.wibar_bg = "#101213"
-theme.wibar_bg = theme.transparent
+theme.wibar_bg = "#101213"
+-- theme.wibar_bg = theme.transparent
 theme.wibar_height = dpi(40)
 
 --- Music
