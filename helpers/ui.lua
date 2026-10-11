@@ -111,4 +111,28 @@ function _ui.screen_mask(s, bg)
 	return mask
 end
 
+function _ui.close_panels(opts)
+    opts = opts or {}
+    local central = opts.central
+    local notif   = opts.notif
+    local info    = opts.info
+
+    -- If nothing was specified, close everything
+    if central == nil and notif == nil and info == nil then
+        central, notif, info = true, true, true
+    end
+
+    for s in screen do
+        if central and s.central_panel then
+            s.central_panel.visible = false
+        end
+        if notif and s.notification_panel then
+            s.notification_panel.visible = false
+        end
+        if info and s.info_panel then
+            s.info_panel.visible = false
+        end
+    end
+end
+
 return _ui

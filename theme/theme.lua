@@ -240,7 +240,7 @@ theme.layoutlist_shape_selected = helpers.ui.rrect(theme.border_radius)
 theme.layoutlist_bg_selected = theme.widget_bg
 
 --- Gaps
-theme.useless_gap = dpi(2)
+theme.useless_gap = dpi(1)
 
 --- Systray
 theme.systray_icon_size = dpi(20)
@@ -259,7 +259,7 @@ theme.tabbar_bg_focus = theme.black
 theme.tabbar_bg_normal = theme.color0
 theme.tabbar_fg_focus = theme.color0
 theme.tabbar_fg_normal = theme.color15
-theme.tabbar_position = "top"
+theme.tabbar_position = "bottom"
 theme.tabbar_AA_radius = 0
 theme.tabbar_size = 0
 theme.mstab_bar_ontop = true

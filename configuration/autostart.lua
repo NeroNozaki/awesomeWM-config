@@ -23,13 +23,11 @@ local function autostart_apps()
 
 	-- Useful Cinnamon leftovers
 	awful.spawn.once("csd-xsettings")
-	-- optional:
-	awful.spawn.once("cinnamon-screensaver")
 
 	-- Utilities
 	awful.spawn.once("ulauncher --hide-window --no-window-shadow")
 	awful.spawn.once("touchpad-watcher.sh")
-	-- awful.spawn.once("gammastep -O 3500")
+	awful.spawn.once("brightnessctl -n 1")
 
 	-- personal configurations
 	awful.spawn.with_shell("setxkbmap -option 'ctrl:nocaps,shift:both_capslock_cancel'")

@@ -21,6 +21,10 @@ shift = "Shift"
 --- ~~~~~~~~~~~~~~~~~~~
 awful.keyboard.append_global_keybindings({
 
+	-- awful.key({}, "Escape", function()
+	--   helpers.ui.close_panels()
+	-- end, { description = "close panels", group = "hotkeys" }),
+
 	--- App
 	--- ~~~
 	-- Terminal
@@ -150,12 +154,30 @@ awful.keyboard.append_global_keybindings({
 
 	--- Brightness Control
 	awful.key({}, "XF86MonBrightnessUp", function()
-		awful.spawn("brightnessctl set 5%+ -q", false)
+		awful.spawn.with_shell([[
+		current=$(brightnessctl g)
+		max=$(brightnessctl m)
+		new=$(( current + max*5/100 ))
+		if [ "$current" -eq $(( max/100 )) ]; then
+			brightnessctl set 4%+ -q
+		else
+			brightnessctl set 5%+ -q
+		fi
+	]])
 		awesome.emit_signal("widget::brightness")
 		awesome.emit_signal("module::brightness_osd:show", true)
 	end, { description = "increase brightness", group = "hotkeys" }),
 	awful.key({}, "XF86MonBrightnessDown", function()
-		awful.spawn("brightnessctl set 5%- -q", false)
+		awful.spawn.with_shell([[
+		current=$(brightnessctl g)
+		max=$(brightnessctl m)
+		new=$(( current - max*5/100 ))
+		if [ "$new" -lt $(( max/100 )) ]; then
+			brightnessctl set 1% -q
+		else
+			brightnessctl set 5%- -q
+		fi
+	]])
 		awesome.emit_signal("widget::brightness")
 		awesome.emit_signal("module::brightness_osd:show", true)
 	end, { description = "decrease brightness", group = "hotkeys" }),
@@ -458,6 +480,16 @@ awful.keyboard.append_global_keybindings({
 
 --- Mouse bindings on desktop
 --- ~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Close panels on Escape
+awful.key({ }, "Escape", function()
+    helpers.ui.close_panels()
+end)
+
+-- Close panels when changing tags
+tag.connect_signal("property::selected", function()
+    helpers.ui.close_panels()
+end)
+
 local main_menu = require("ui.main-menu")
 awful.mouse.append_global_mousebindings({
 	--- Right click
@@ -465,6 +497,7 @@ awful.mouse.append_global_mousebindings({
 		modifiers = {},
 		button = 3,
 		on_press = function()
+			helpers.ui.close_panels()
 			main_menu:toggle()
 		end,
 	}),
@@ -473,11 +506,13 @@ awful.mouse.append_global_mousebindings({
 awful.mouse.append_global_mousebindings({
 	--- Left click
 	awful.button({}, 1, function()
+		helpers.ui.close_panels()
 		naughty.destroy_all_notifications()
 	end),
 
 	--- Middle click
 	awful.button({}, 2, function()
+		helpers.ui.close_panels({ central = false })
 		awesome.emit_signal("central_panel::toggle", awful.screen.focused())
 	end),
 })
@@ -487,12 +522,19 @@ awful.mouse.append_global_mousebindings({
 client.connect_signal("request::default_mousebindings", function()
 	awful.mouse.append_client_mousebindings({
 		awful.button({}, 1, function(c)
+			helpers.ui.close_panels()
+			c:activate({ context = "mouse_click" })
+		end),
+		awful.button({}, 2, function(c)
+			helpers.ui.close_panels()
 			c:activate({ context = "mouse_click" })
 		end),
 		awful.button({ mod }, 1, function(c)
+			helpers.ui.close_panels()
 			c:activate({ context = "mouse_click", action = "mouse_move" })
 		end),
 		awful.button({ mod }, 3, function(c)
+			helpers.ui.close_panels()
 			c:activate({ context = "mouse_click", action = "mouse_resize" })
 		end),
 	})

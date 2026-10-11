@@ -86,7 +86,7 @@ ui_notifbox_builder.notifbox_actions = function(n)
 		widget = naughty.list.actions,
 	})
 
-	helpers.ui.add_hover_cursor(actions_template, "hand1")
+	-- helpers.ui.add_hover_cursor(actions_template, "hand2")
 	return actions_template
 end
 
@@ -116,7 +116,7 @@ ui_notifbox_builder.notifbox_dismiss = function()
 		widget = wibox.container.background,
 	})
 
-	helpers.ui.add_hover_cursor(notifbox_dismiss, "hand1")
+	-- helpers.ui.add_hover_cursor(notifbox_dismiss, "hand2")
 	return notifbox_dismiss
 end
 

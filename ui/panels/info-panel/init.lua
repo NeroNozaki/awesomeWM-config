@@ -11,7 +11,11 @@ local gears = require("gears")
 
 return function(s)
 	--- Date
-	local hours = wibox.widget.textclock("%I")
+	-- 12 hour clock
+	-- local hours = wibox.widget.textclock("%I")
+	-- local minutes = wibox.widget.textclock("%M")
+
+	local hours = wibox.widget.textclock("%H")
 	local minutes = wibox.widget.textclock("%M")
 
 	local date = {

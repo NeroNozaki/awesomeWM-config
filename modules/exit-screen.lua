@@ -87,7 +87,7 @@ local create_button = function(symbol, hover_color, text, command)
 		button.border_color = beautiful.lighter_black
 	end)
 
-	helpers.ui.add_hover_cursor(button, "hand1")
+	helpers.ui.add_hover_cursor(button, "hand2")
 
 	return button
 end

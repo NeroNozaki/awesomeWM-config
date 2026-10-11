@@ -50,7 +50,7 @@ local function button(args)
 	local widget = wcontainer(args)
 
 	if args.hover_effect == true then
-		helpers.ui.add_hover_cursor(widget, "hand1")
+		helpers.ui.add_hover_cursor(widget, "hand2")
 	end
 
 	widget.animation = animation:new({

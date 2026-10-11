@@ -47,55 +47,55 @@ end
 -- }}}
 
 
--- ============================================================
--- Safe experimental loader
--- ============================================================
-local function try_load_experimental()
-    -- Everything that can break goes inside this function
-    -- local beautiful = require("beautiful")
-    -- local gears = require("gears")
-
-    -- 1. Load the fancy theme (this is the most common failure point)
-    local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
-    beautiful.init(theme_dir .. "theme.lua")
-
-    -- 2. Load dependencies (anything for testing)
-    require("configuration")
-    require("modules")
-    require("ui")
-
-    --- Enable for lower memory consumption
-    collectgarbage("setpause", 110)
-    collectgarbage("setstepmul", 1000)
-    gears.timer({
-        timeout = 5,
-        autostart = true,
-        call_now = true,
-        callback = function()
-            collectgarbage("collect")
-        end,
-    })
-end
-
-local ok, err = pcall(try_load_experimental)
-
-if not ok then
-    -- Experimental stuff failed → keep the base config running
-    naughty.notify({
-        preset = naughty.config.presets.critical,
-        title  = "Experimental config failed",
-        text   = tostring(err),
-        timeout = 0,          -- stays until you click it
-    })
-
-    -- Optional: force a known-good minimal theme so things still look decent
-    beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme2.lua")
-end
+-- -- ============================================================
+-- -- Safe experimental loader
+-- -- ============================================================
+-- local function try_load_experimental()
+--     -- Everything that can break goes inside this function
+--     -- local beautiful = require("beautiful")
+--     -- local gears = require("gears")
+--
+--     -- 1. Load the fancy theme (this is the most common failure point)
+--     local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
+--     beautiful.init(theme_dir .. "theme.lua")
+--
+--     -- 2. Load dependencies (anything for testing)
+--     require("configuration")
+--     require("modules")
+--     require("ui")
+--
+--     --- Enable for lower memory consumption
+--     collectgarbage("setpause", 110)
+--     collectgarbage("setstepmul", 1000)
+--     gears.timer({
+--         timeout = 5,
+--         autostart = true,
+--         call_now = true,
+--         callback = function()
+--             collectgarbage("collect")
+--         end,
+--     })
+-- end
+--
+-- local ok, err = pcall(try_load_experimental)
+--
+-- if not ok then
+--     -- Experimental stuff failed → keep the base config running
+--     naughty.notify({
+--         preset = naughty.config.presets.critical,
+--         title  = "Experimental config failed",
+--         text   = tostring(err),
+--         timeout = 0,          -- stays until you click it
+--     })
+--
+--     -- Optional: force a known-good minimal theme so things still look decent
+--     beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme2.lua")
+-- end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
--- local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
--- beautiful.init(theme_dir .. "theme2.lua")
+local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
+beautiful.init(theme_dir .. "theme2.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -248,7 +248,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    -- awful.tag({ "1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()

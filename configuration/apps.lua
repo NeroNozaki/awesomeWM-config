@@ -8,17 +8,18 @@ return {
 		--- Default terminal emulator
 		terminal = "ghostty +new-window",
 		--- Default music client
-		music_player = "ghostty +new-window --class music ncmpcpp",
+		-- music_player = "ghostty +new-window --class music ncmpcpp",
+		music_player = "spotifast",
 		--- Default text editor
-		text_editor = "ghostty +new-window -e nvim",
+		text_editor = "ghostty -e +new-window nvim",
 		--- Default code editor
-		code_editor = "ghostty +new-window -e nvim",
+		code_editor = "ghostty -e +new-window nvim",
 		--- Default web browser
 		web_browser = "librewolf",
 		--- Default file manager
 		file_manager = "nemo",
 		--- Default network manager
-		network_manager = "ghostyy +new-window -e nmtui",
+		network_manager = "nm-applet",
 		--- Default bluetooth manager
 		bluetooth_manager = "blueman-manager",
 		--- Default power manager
