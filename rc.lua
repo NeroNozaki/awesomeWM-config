@@ -51,6 +51,9 @@ end
 -- Themes define colours, icons, font and wallpapers.
 local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
 beautiful.init(theme_dir .. "theme.lua")
+-- require("configuration")
+require("modules")
+require("ui")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"

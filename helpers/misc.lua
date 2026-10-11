@@ -83,7 +83,7 @@ function _misc.prompt(action, textbox, prompt, callback)
 			prompt = prompt,
 			-- prompt       = '<b>Web search: </b>',
 			textbox = textbox,
-			font = beautiful.font_name .. "Regular 12",
+			font = (beautiful.font_name or "Sans ") .. "Regular 12",
 			history_path = awful.util.get_cache_dir() .. "/history_web",
 			done_callback = callback,
 			exe_callback = function(input)
@@ -94,7 +94,7 @@ function _misc.prompt(action, textbox, prompt, callback)
 				naughty.notify({
 					title = "Searching the web for",
 					text = input,
-					icon = gears.color.recolor_image(icons.web_browser, beautiful.accent),
+					icon = icons.web_browser and gears.color.recolor_image(icons.web_browser, beautiful.accent) or nil,
 					urgency = "low",
 				})
 			end,

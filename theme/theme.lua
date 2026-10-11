@@ -3,7 +3,6 @@
 --- ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀▀
 
 local gears = require("gears")
-local gshape = require("gears.shape")
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 local theme = dofile(themes_path .. "default/theme.lua")
@@ -12,7 +11,6 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local helpers = require("helpers")
 local icons = require("icons")
-
 
 --- ░█▀▀░█▀█░█▀█░▀█▀░█▀▀
 --- ░█▀▀░█░█░█░█░░█░░▀▀█
