@@ -19,7 +19,7 @@ return {
 		--- Default file manager
 		file_manager = "nemo",
 		--- Default network manager
-		network_manager = "nm-applet",
+		network_manager = "nm-tray",
 		--- Default bluetooth manager
 		bluetooth_manager = "blueman-manager",
 		--- Default power manager

@@ -137,9 +137,84 @@ ruled.client.connect_signal("request::rules", function()
 			awful.placement.centered(c, { honor_padding = true, honor_workarea = true })
 		end,
 	})
+
+	ruled.client.append_rule({
+		rule = { class = "libreWolf" },
+		properties = {
+			size_hints_honor = false,
+			screen = 1,
+			tag = "2"
+		}
+	})
+
+	ruled.client.append_rule({
+		rule = { class = "spotifast" },
+		properties = {
+			minimized = true,
+			tag = "3",
+		},
+	})
 end)
 
-if ruled.client.id ~= "floating" then
-	ruled.client.connect_signal("focus", function(c) c.border_color = beautiful.border_color_active end)
-	ruled.client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_color_normal end)
+-- Helper: is this the only tiled client on its screen?
+local function is_sole_tiled(c)
+    if c.floating or c.maximized or c.fullscreen then
+        return false
+    end
+    local count = 0
+    for _, cl in ipairs(c.screen.tiled_clients) do
+        if not cl.floating and not cl.minimized then
+            count = count + 1
+            if count > 1 then return false end
+        end
+    end
+    return count == 1
 end
+
+local function update_border(c)
+    if not c or not c.valid then return end
+
+    if is_sole_tiled(c) then
+        c.border_width = 0
+    else
+        c.border_width = beautiful.border_width or 2
+    end
+
+    if c == client.focus and not c.floating then
+        c.border_color = beautiful.border_color_active
+    else
+        c.border_color = beautiful.border_color_normal
+    end
+end
+
+-- Keep borders correct on every relevant event
+client.connect_signal("focus", update_border)
+client.connect_signal("unfocus", update_border)
+client.connect_signal("property::floating", update_border)
+client.connect_signal("property::maximized", update_border)
+client.connect_signal("property::fullscreen", update_border)
+client.connect_signal("manage", update_border)
+client.connect_signal("unmanage", function()
+    -- update the remaining clients on that screen
+    for s in screen do
+        for _, c in ipairs(s.clients) do
+            update_border(c)
+        end
+    end
+end)
+
+tag.connect_signal("property::selected", function()
+    for s in screen do
+        for _, c in ipairs(s.clients) do
+            update_border(c)
+        end
+    end
+end)
+
+tag.connect_signal("property::layout", function()
+    for s in screen do
+        for _, c in ipairs(s.clients) do
+            update_border(c)
+        end
+    end
+end)

@@ -39,7 +39,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	local layout_popup = awful.popup({
 		widget = wibox.widget({
 			{ layout_list, margins = dpi(24), widget = wibox.container.margin },
-			bg = beautiful.black,
+			bg = beautiful.transparent,
 			shape = helpers.ui.rrect(beautiful.border_radius),
 			widget = wibox.container.background,
 		}),

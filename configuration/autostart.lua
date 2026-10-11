@@ -11,6 +11,9 @@ local function autostart_apps()
 	--- Music Server
 	-- helpers.run.run_once_pgrep("mpd")
 	-- helpers.run.run_once_pgrep("mpDris2")
+	
+	helpers.run.run_once_pgrep("spotifast")
+	
 	--- Polkit Agent
 	helpers.run.run_once_ps(
 		"lxpolkit",
@@ -18,7 +21,8 @@ local function autostart_apps()
 	)
 	--- Other stuff
 	helpers.run.run_once_grep("blueman-applet")
-	helpers.run.run_once_grep("nm-applet")
+	-- helpers.run.run_once_grep("nm-applet")
+	helpers.run.run_once_grep("nm-tray")
 
 
 	-- Useful Cinnamon leftovers
