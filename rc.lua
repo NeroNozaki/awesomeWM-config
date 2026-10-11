@@ -226,7 +226,8 @@ local tasklist_buttons = gears.table.join(
     end),
     awful.button({ }, 5, function ()
         awful.client.focus.byidx(-1)
-    end))
+    end)
+)
 
 local function set_wallpaper(s)
     -- Wallpaper

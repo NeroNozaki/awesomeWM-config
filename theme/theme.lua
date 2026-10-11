@@ -17,12 +17,11 @@ local icons = require("icons")
 --- ░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
 
 --- Ui Fonts
--- theme.font_name = "Roboto "
-theme.font_name = "Ubuntu "
+theme.font_name = "Roboto "
 theme.font = theme.font_name .. "Medium 10"
 
 --- Icon Fonts
-theme.icon_font = "RecMonoCasual Nerd Font "
+theme.icon_font = "Material Icons "
 
 --- ░█▀▀░█▀█░█░░░█▀█░█▀▄░█▀▀
 --- ░█░░░█░█░█░░░█░█░█▀▄░▀▀█
