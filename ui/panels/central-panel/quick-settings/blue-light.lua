@@ -53,6 +53,20 @@ end
 kill_state()
 
 local toggle_action = function()
+	-- Use this to set day and light redshift if you want
+	-- the numbers after -l are LATITUDE:LONGITUDE
+	-- the numbers after -t are the color to use on DAY:NIGHT
+	-- awful.spawn.easy_async_with_shell(
+	-- 	[[
+	-- 	if [ ! -z $(pgrep gammastep) ];
+	-- 	then
+	-- 		gammastep -x && pkill gammastep && killall gammastep
+	-- 		echo 'OFF'
+	-- 	else
+	-- 		gammastep -l 0:0 -t 4500:4500 -r &>/dev/null &
+	-- 		echo 'ON'
+	-- 	fi
+	-- 	]],
 	awful.spawn.easy_async_with_shell(
 		[[
 		if [ ! -z $(pgrep gammastep) ];
@@ -60,7 +74,7 @@ local toggle_action = function()
 			gammastep -x && pkill gammastep && killall gammastep
 			echo 'OFF'
 		else
-			gammastep -l 0:0 -t 4500:4500 -r &>/dev/null &
+			gammastep -O 3500 -r &>/dev/null &
 			echo 'ON'
 		fi
 		]],
@@ -75,6 +89,7 @@ local toggle_action = function()
 	)
 end
 
+toggle_action()
 widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
 	toggle_action()
 end)))

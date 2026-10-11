@@ -76,7 +76,6 @@ local function try_load_experimental()
             collectgarbage("collect")
         end,
     })
-
 end
 
 local ok, err = pcall(try_load_experimental)
