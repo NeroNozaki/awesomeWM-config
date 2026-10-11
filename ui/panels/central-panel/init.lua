@@ -127,7 +127,7 @@ return function(s)
 	s.user_profile = require("ui.panels.central-panel.user-profile")
 	s.quick_settings = require("ui.panels.central-panel.quick-settings")
 	s.slider = require("ui.panels.central-panel.slider")
-	s.music_player = require("ui.panels.central-panel.music-player")
+	-- s.music_player = require("ui.panels.central-panel.music-player")
 
 	s.central_panel = awful.popup({
 		type = "dock",
@@ -164,7 +164,7 @@ return function(s)
 								},
 								{
 									s.stats,
-									s.music_player,
+									-- s.music_player,
 									s.awesomewm,
 									layout = wibox.layout.fixed.vertical,
 								},

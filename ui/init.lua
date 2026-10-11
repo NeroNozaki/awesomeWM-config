@@ -1,4 +1,4 @@
--- require(... .. ".notifications")
+require(... .. ".notifications")
 require(... .. ".popups")
 
 local decorations = require(... .. ".decorations")

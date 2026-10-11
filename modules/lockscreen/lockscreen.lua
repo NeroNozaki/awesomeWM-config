@@ -169,7 +169,7 @@ end
 local function activate_word(w)
 	for i, m in pairs(char_map[w]) do
 		local text = m.text
-		m.markup = helpers.ui.colorize_text(text, beautiful.white)
+		m.markup = helpers.ui.colorize_text(text, beautiful.white or "#edeff0")
 	end
 end
 

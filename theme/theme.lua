@@ -104,7 +104,7 @@ end
 theme.accent = theme.color4
 
 --- UI events
-theme.leave_event = transparent
+theme.leave_event = theme.transparent
 theme.enter_event = "#ffffff" .. "10"
 theme.press_event = "#ffffff" .. "15"
 theme.release_event = "#ffffff" .. "10"

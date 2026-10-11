@@ -9,7 +9,8 @@ local capi = { mouse = mouse }
 local _ui = {}
 
 function _ui.colorize_text(text, color)
-	return "<span foreground='" .. color .. "'>" .. text .. "</span>"
+    color = color or "#ffffff"   -- fallback so it never crashes
+    return "<span foreground='" .. color .. "'>" .. text .. "</span>"
 end
 
 function _ui.add_hover_cursor(w, hover_cursor)
