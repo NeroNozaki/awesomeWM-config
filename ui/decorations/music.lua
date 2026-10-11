@@ -5,7 +5,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local ruled = require("ruled")
 local wibox = require("wibox")
-local playerctl_daemon = require("signal.playerctl")
+-- local playerctl_daemon = require("signal.playerctl")
 local widgets = require("ui.widgets")
 local helpers = require("helpers")
 

@@ -37,8 +37,8 @@ end
 local kill_state = function()
 	awful.spawn.easy_async_with_shell(
 		[[
-		redshift -x
-		kill -9 $(pgrep redshift)
+		gammastep -x
+		kill -9 $(pgrep gammastep)
 		]],
 		function(stdout)
 			stdout = tonumber(stdout)
@@ -55,12 +55,12 @@ kill_state()
 local toggle_action = function()
 	awful.spawn.easy_async_with_shell(
 		[[
-		if [ ! -z $(pgrep redshift) ];
+		if [ ! -z $(pgrep gammastep) ];
 		then
-			redshift -x && pkill redshift && killall redshift
+			gammastep -x && pkill gammastep && killall gammastep
 			echo 'OFF'
 		else
-			redshift -l 0:0 -t 4500:4500 -r &>/dev/null &
+			gammastep -l 0:0 -t 4500:4500 -r &>/dev/null &
 			echo 'ON'
 		fi
 		]],

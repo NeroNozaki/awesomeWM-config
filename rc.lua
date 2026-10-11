@@ -61,9 +61,9 @@ local function try_load_experimental()
     beautiful.init(theme_dir .. "theme.lua")
 
     -- 2. Load dependencies (anything for testing)
-    -- require("configuration")
+    require("configuration")
     require("modules")
-    -- require("ui")
+    require("ui")
 
     --- Enable for lower memory consumption
     collectgarbage("setpause", 110)
@@ -91,13 +91,13 @@ if not ok then
     })
 
     -- Optional: force a known-good minimal theme so things still look decent
-    beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+    beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/theme2.lua")
 end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
-beautiful.init(theme_dir .. "theme2.lua")
+-- local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
+-- beautiful.init(theme_dir .. "theme2.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -249,7 +249,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
+    -- awful.tag({ "1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()

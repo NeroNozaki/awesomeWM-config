@@ -337,4 +337,4 @@ end)
 
 require(... .. ".error")
 require(... .. ".battery")
-require(... .. ".playerctl")
+-- require(... .. ".playerctl")
