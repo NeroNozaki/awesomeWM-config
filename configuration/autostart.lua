@@ -21,8 +21,7 @@ local function autostart_apps()
 	)
 	--- Other stuff
 	helpers.run.run_once_grep("blueman-applet")
-	-- helpers.run.run_once_grep("nm-applet")
-	helpers.run.run_once_grep("nm-tray")
+	helpers.run.run_once_grep("nm-applet")
 
 
 	-- Useful Cinnamon leftovers

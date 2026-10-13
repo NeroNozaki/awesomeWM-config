@@ -9,6 +9,7 @@ local bling = require("modules.bling")
 local machi = require("modules.layout-machi")
 local helpers = require("helpers")
 local apps = require("configuration.apps")
+local bluelight = require("signal.bluelight")
 
 --- Make key easier to call
 --- ~~~~~~~~~~~~~~~~~~~~~~~
@@ -265,7 +266,11 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ shift }, "F11", function()
 		awful.spawn.with_shell("$HOME/.dotfiles/scripts/neo-toggle.sh")
 	end,
-		{description = "toggle the neo layout", group = "personal"})
+		{description = "toggle the neo layout", group = "personal"}),
+	awful.key({ shift }, "F10", function()
+		bluelight.toggle_bluelight()
+	end,
+		{description = "toggle bluelight filter", group = "personal"}),
 })
 
 --- Client key bindings

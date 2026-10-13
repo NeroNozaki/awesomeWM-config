@@ -154,6 +154,16 @@ ruled.client.connect_signal("request::rules", function()
 			tag = "3",
 		},
 	})
+
+	ruled.client.append_rule({
+		rule = { class = { "Polybar" },
+			properties = {
+				focusable = false,
+				focus = false,
+				raise = false,
+			},
+		},
+	})
 end)
 
 -- Helper: is this the only tiled client on its screen?
