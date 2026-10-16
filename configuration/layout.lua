@@ -18,6 +18,7 @@ machi.editor.nested_layouts = {
 --- Set the layouts
 tag.connect_signal("request::default_layouts", function()
 	awful.layout.append_default_layouts({
+		awful.layout.suit.spiral,
 		awful.layout.suit.spiral.dwindle,
 		awful.layout.suit.tile,
 		awful.layout.suit.max,

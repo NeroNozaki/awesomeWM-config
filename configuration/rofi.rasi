@@ -18,13 +18,14 @@ configuration {
 }
 
 window {
+    anchor:                         north;
     transparency:                   "real";
     background-color:               @BG;
     text-color:                     @FG;
-    border-radius:                  8px;
-    width:                          700px;
+    border-radius:                  0px;
+    width:                          500px;
     x-offset:                       0;
-    y-offset:                       -4.3%;
+    y-offset:                       -55%;
 }
 
 prompt {
@@ -73,27 +74,29 @@ case-indicator {
 
 listview {
     background-color:               #00000000;
-    columns:                        5;
+    columns:                        1;
     lines:							5;
+    fixed-height:                    false;
     spacing:                        4px;
     cycle:                          false;
     dynamic:                        true;
+    require-input:                  true;
     layout:                         vertical;
 }
 
 mainbox {
     background-color:               @BG;
     children:                       [ inputbar, listview ];
-    spacing:                       	40px;
-    padding:                        30px;
+    spacing:                       	0px;
+    padding:                        10px;
 }
 
 element {
     background-color:               #00000000;
     text-color:                     @FG;
-    orientation:                    vertical;
+    orientation:                    horizontal;
     border-radius:                  8px;
-    padding:                        20px;
+    padding:                        10px;
 }
 
 element-icon {
@@ -110,6 +113,7 @@ element-text {
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
+    font:           				"Roboto Medium 12";
 }
 
 element normal.urgent,

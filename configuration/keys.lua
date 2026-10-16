@@ -151,20 +151,20 @@ awful.keyboard.append_global_keybindings({
 	--- Bling
 	--- ~~~~~
 	--- Add client to tabbed layout
-	awful.key({ alt }, "a", function()
-		bling.module.tabbed.pick_with_dmenu()
-	end, { description = "pick client to add to tab group", group = "tabs" }),
-
-	--- Remove client from tabbed layout
-	awful.key({ alt }, "d", function()
-		bling.module.tabbed.pop()
-	end, { description = "remove focused client from tabbing group", group = "tabs" }),
-
-	--- Cycle through client in tabbed layout
-	awful.key({ alt }, "s", function()
-		bling.module.tabbed.iter()
-	end, { description = "iterate through tabbing group", group = "tabs" }),
-
+	-- awful.key({ alt }, "a", function()
+	-- 	bling.module.tabbed.pick_with_dmenu()
+	-- end, { description = "pick client to add to tab group", group = "tabs" }),
+	--
+	-- --- Remove client from tabbed layout
+	-- awful.key({ alt }, "d", function()
+	-- 	bling.module.tabbed.pop()
+	-- end, { description = "remove focused client from tabbing group", group = "tabs" }),
+	--
+	-- --- Cycle through client in tabbed layout
+	-- awful.key({ alt }, "s", function()
+	-- 	bling.module.tabbed.iter()
+	-- end, { description = "iterate through tabbing group", group = "tabs" }),
+	--
 	--- Hotkeys
 	--- ~~~~~~~
 	--- Music player
@@ -251,6 +251,10 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod, alt }, "l", function()
 		lock_screen_show()
 	end, { description = "lock screen", group = "hotkeys" }),
+	-- awful.key({ mod, alt }, "l", function()
+	-- 	awful.spawn.easy_async_with_shell("betterlockscreen -u ~/Pictures/Saved Images/wallpapers/", function() end);
+	-- 	awful.spawn.with_shell("betterlockscreen -l dimblur")
+	-- end, { description = "lock screen", group = "hotkeys" }),
 
 	--- Exit screen
 	awful.key({ mod }, "Escape", function()
@@ -382,7 +386,7 @@ client.connect_signal("request::default_keybindings", function()
 		end),
 
 		--- Close window
-		awful.key({ mod }, "q", function()
+		awful.key({ mod }, "BackSpace", function()
 			client.focus:kill()
 		end),
 		awful.key({ alt }, "F4",function (c) c:kill() end,

@@ -7,6 +7,7 @@
 pcall(require, "luarocks.loader")
 local gears = require("gears")
 local beautiful = require("beautiful")
+package.loaded["naughty.dbus"] = {}
 
 --- ░▀█▀░█░█░█▀▀░█▄█░█▀▀
 --- ░░█░░█▀█░█▀▀░█░█░█▀▀

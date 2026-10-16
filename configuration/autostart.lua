@@ -22,19 +22,20 @@ local function autostart_apps()
 	--- Other stuff
 	helpers.run.run_once_grep("blueman-applet")
 	helpers.run.run_once_grep("nm-applet")
+	helpers.run.run_once_grep("dunst")
 
 
 	-- Useful Cinnamon leftovers
 	awful.spawn.once("csd-xsettings")
 
 	-- Utilities
-	awful.spawn.once("ulauncher --hide-window --no-window-shadow")
+	-- awful.spawn.once("ulauncher --hide-window --no-window-shadow")
 	awful.spawn.once("touchpad-watcher.sh")
 	awful.spawn.once("brightnessctl -n 1")
 	awful.spawn.once("polybar -r -c $HOME/.config/awesome/ui/polybar/config.ini")
 
 	-- personal configurations
-	awful.spawn.with_shell("setxkbmap -option 'ctrl:nocaps,shift:both_capslock_cancel'")
+	awful.spawn.with_shell("~/.dotfiles/scripts/keyboard-start-config.sh")
 end
 
 autostart_apps()
