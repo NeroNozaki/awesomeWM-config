@@ -17,4 +17,4 @@
 - [ ] Prettify the system monitor widget on the polybar
 - [ ] Make it so the entire screen blurs while rofi is active
 - [ ] Add some sort of prefix system to rofi to change behavior? (kinda like ulauncher)
-
+- [ ] Add some on screen notifications for volume and brightness

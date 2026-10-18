@@ -59,10 +59,12 @@ ruled.client.connect_signal("request::rules", function()
 			class = {
 				"Lxappearance",
 				"Nm-connection-editor",
+				"Nemo",
 			},
 			name = {
 				"Event Tester", -- xev
-				"Ulauncher Preferences"
+				"Ulauncher Preferences",
+				"nemo",
 			},
 			role = {
 				"AlarmWindow",
@@ -126,6 +128,7 @@ ruled.client.connect_signal("request::rules", function()
 			class = {
 				"feh",
 				"imv",
+				"Xviewer"
 			},
 		},
 		properties = {

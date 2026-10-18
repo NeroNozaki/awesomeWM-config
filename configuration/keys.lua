@@ -386,11 +386,15 @@ client.connect_signal("request::default_keybindings", function()
 		end),
 
 		--- Close window
-		awful.key({ mod }, "BackSpace", function()
-			client.focus:kill()
-		end),
+		awful.key({ mod }, "BackSpace", function(c) c:kill() end,
+			{description = "close window", group = "client"}),
+
+		awful.key({ mod }, "q", function(c) c:kill() end,
+			{description = "close window", group = "client"}),
+
 		awful.key({ alt }, "F4",function (c) c:kill() end,
 			{description = "close window", group = "client"}),
+
 		awful.key({ mod, alt }, "F4", function(c) if c and c.pid then awful.spawn.with_shell("kill -KILL " .. c.pid) end end,
 			{description = "force kill process", group = "client"}),
 
