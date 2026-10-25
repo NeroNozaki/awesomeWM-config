@@ -148,6 +148,11 @@ awful.keyboard.append_global_keybindings({
 		helpers.client.resize_client(c, "right")
 	end, { description = "resize to the right", group = "client" }),
 
+	awful.key({ mod } , "t",
+		awful.client.floating.toggle,
+		{ description = "toggle a window to floating mode", group = "client" }),
+
+
 	--- Bling
 	--- ~~~~~
 	--- Add client to tabbed layout
@@ -248,13 +253,13 @@ awful.keyboard.append_global_keybindings({
 	),
 
 	--- Lockscreen
-	awful.key({ mod, alt }, "l", function()
-		lock_screen_show()
-	end, { description = "lock screen", group = "hotkeys" }),
 	-- awful.key({ mod, alt }, "l", function()
-	-- 	awful.spawn.easy_async_with_shell("betterlockscreen -u ~/Pictures/Saved Images/wallpapers/", function() end);
-	-- 	awful.spawn.with_shell("betterlockscreen -l dimblur")
+	-- 	lock_screen_show()
 	-- end, { description = "lock screen", group = "hotkeys" }),
+	awful.key({ mod, alt }, "l", function()
+		awful.spawn.easy_async_with_shell("betterlockscreen -u ~/Pictures/Saved Images/wallpapers/", function() end);
+		awful.spawn.with_shell("betterlockscreen -l dimblur")
+	end, { description = "lock screen", group = "hotkeys" }),
 
 	--- Exit screen
 	awful.key({ mod }, "Escape", function()
@@ -326,19 +331,19 @@ client.connect_signal("request::default_keybindings", function()
 		end),
 
 		--- Toggle titlebars (for focused client only)
-		awful.key({ mod }, "t", function(c)
-			decorations.cycle(c)
-		end, { description = "toggle titlebar", group = "client" }),
+		-- awful.key({ mod }, "t", function(c)
+		-- 	decorations.cycle(c)
+		-- end, { description = "toggle titlebar", group = "client" }),
 		--- Toggle titlebars (for all visible clients in selected tag)
-		awful.key({ mod, shift }, "t", function(c)
-			local clients = awful.screen.focused().clients
-			for _, c in pairs(clients) do
-				decorations.cycle(c)
-			end
-		end, { description = "toggle titlebar", group = "client" }),
+		-- awful.key({ mod, shift }, "t", function(c)
+		-- 	local clients = awful.screen.focused().clients
+		-- 	for _, c in pairs(clients) do
+		-- 		decorations.cycle(c)
+		-- 	end
+		-- end, { description = "toggle titlebar", group = "client" }),
 
 		--- Toggle floating
-		awful.key({ mod, ctrl }, "space", awful.client.floating.toggle),
+		-- awful.key({ mod, ctrl }, "space", awful.client.floating.toggle),
 
 		--- Toggle fullscreen
 		awful.key({ mod }, "f", function()

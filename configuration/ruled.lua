@@ -60,6 +60,7 @@ ruled.client.connect_signal("request::rules", function()
 				"Lxappearance",
 				"Nm-connection-editor",
 				"Nemo",
+				"Blueman-manager",
 			},
 			name = {
 				"Event Tester", -- xev

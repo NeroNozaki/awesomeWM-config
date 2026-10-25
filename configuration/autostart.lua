@@ -32,7 +32,18 @@ local function autostart_apps()
 	-- awful.spawn.once("ulauncher --hide-window --no-window-shadow")
 	awful.spawn.once("touchpad-watcher.sh")
 	awful.spawn.once("brightnessctl -n 1")
-	awful.spawn.once("polybar -r -c $HOME/.config/awesome/ui/polybar/config.ini")
+	helpers.run.check_if_running("polybar",
+		-- if it's running,
+		function()
+			awful.spawn("pkill polybar")
+			awful.spawn.once("polybar -r -c $HOME/.config/awesome/ui/polybar/config.ini")
+		end,
+
+		-- else,
+		function()
+			awful.spawn.once("polybar -r -c $HOME/.config/awesome/ui/polybar/config.ini")
+		end
+	)
 
 	-- personal configurations
 	awful.spawn.with_shell("~/.dotfiles/scripts/keyboard-start-config.sh")
