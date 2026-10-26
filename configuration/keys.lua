@@ -272,9 +272,9 @@ awful.keyboard.append_global_keybindings({
         {description = "toggle touchpad", group = "personal"}),
 
 	awful.key({ shift }, "F11", function()
-		awful.spawn.with_shell("$HOME/.dotfiles/scripts/neo-toggle.sh")
+		awful.spawn.with_shell("$HOME/.dotfiles/scripts/homerowmods-toggle.sh")
 	end,
-		{description = "toggle the neo layout", group = "personal"}),
+		{description = "toggle homerowmods", group = "personal"}),
 	awful.key({ shift }, "F10", function()
 		bluelight.toggle_bluelight()
 	end,

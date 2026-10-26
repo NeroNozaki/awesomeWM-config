@@ -61,6 +61,8 @@ ruled.client.connect_signal("request::rules", function()
 				"Nm-connection-editor",
 				"Nemo",
 				"Blueman-manager",
+				"Godot_Editor",
+				"Godot",
 			},
 			name = {
 				"Event Tester", -- xev
