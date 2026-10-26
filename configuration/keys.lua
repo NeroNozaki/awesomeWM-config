@@ -257,7 +257,6 @@ awful.keyboard.append_global_keybindings({
 	-- 	lock_screen_show()
 	-- end, { description = "lock screen", group = "hotkeys" }),
 	awful.key({ mod, alt }, "l", function()
-		awful.spawn.easy_async_with_shell("betterlockscreen -u ~/Pictures/Saved Images/wallpapers/", function() end);
 		awful.spawn.with_shell("betterlockscreen -l dimblur")
 	end, { description = "lock screen", group = "hotkeys" }),
 

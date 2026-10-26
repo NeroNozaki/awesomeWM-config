@@ -45,6 +45,10 @@ local function autostart_apps()
 		end
 	)
 
+	helpers.run.check_if_running("xss-lock", nil, function()
+		awful.spawn("xss-lock -s c2 -l -- betterlockscreen -l dimblur &")
+	end)
+
 	-- personal configurations
 	awful.spawn.with_shell("~/.dotfiles/scripts/keyboard-start-config.sh")
 end
